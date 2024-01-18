@@ -1,5 +1,6 @@
 package edu.greenriver.sdev.dadjokes;
 
+import edu.greenriver.sdev.dadjokes.data.DadJokeRepository;
 import edu.greenriver.sdev.dadjokes.domain.DadJoke;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,6 +14,7 @@ public class DadjokesApplication {
 
     public static void main(String[] args) {
         ApplicationContext context = SpringApplication.run(DadjokesApplication.class, args);
+        DadJokeRepository repo = context.getBean(DadJokeRepository.class);
 
         List<DadJoke> dadJokes = new ArrayList<>();
 
@@ -27,6 +29,8 @@ public class DadjokesApplication {
         dadJokes.add(new DadJoke(9, "What do you call a belt made of watches? A waist of time."));
         dadJokes.add(new DadJoke(10, "I'm on a seafood diet. I see food and I eat it."));
 
+
+        repo.saveAll(dadJokes);
     }
 
 }
