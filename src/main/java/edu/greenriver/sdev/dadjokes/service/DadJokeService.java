@@ -36,4 +36,8 @@ public class DadJokeService {
 //
         repo.deleteById(id);
     }
+
+    public DadJoke byId(int id) {
+        return repo.findById(id).orElseThrow();
+    }
 }
